@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Mapping Example</title>
+</head>
+<body>
+  <h2>Interactive Shapes - Click on Different Areas</h2>
+  <img src="worldmap.PNG" alt="World Map" usemap="#worldmap" width="600" height="400">
+
+  <map name="worldmap">
+    <!-- Rectangle Shape -->
+    <area shape="rect" coords="50,50,200,150" href="rectangle.html" alt="Rectangle Area">
+    
+    <!-- Circle Shape -->
+    <area shape="circle" coords="400,100,60" href="circle.html" alt="Circle Area">
+    
+    <!-- Polygon Shape -->
+    <area shape="poly" coords="300,250,350,300,400,280,380,230,320,240" href="polygon.html" alt="Polygon Area">
+  </map>
+</body>
+</html>

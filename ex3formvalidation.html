@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation using DHTML</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f8f9fa;
+      text-align: center;
+    }
+    form {
+      background: white;
+      width: 300px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px gray;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 5px 0;
+    }
+    #msg {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function validateForm() {
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let pass = document.getElementById("password").value.trim();
+      let msg = document.getElementById("msg");
+
+      if (name === "" || email === "" || pass === "") {
+        msg.innerHTML = "All fields are required!";
+        document.body.style.backgroundColor = "#ffe6e6"; // DHTML effect
+        return false;
+      }
+      if (!email.includes("@") || !email.includes(".")) {
+        msg.innerHTML = "Enter a valid email!";
+        return false;
+      }
+      if (pass.length < 6) {
+        msg.innerHTML = "Password must be at least 6 characters!";
+        return false;
+      }
+
+      msg.innerHTML = "Form Submitted Successfully!";
+      msg.style.color = "green";
+      document.body.style.backgroundColor = "#e6ffe6"; // DHTML effect
+      return false; // prevent actual submit for demo
+    }
+  </script>
+</head>
+
+<body>
+  <h2>Registration Form</h2>
+  <form onsubmit="return validateForm()">
+    <input type="text" id="name" placeholder="Enter Name"><br>
+    <input type="text" id="email" placeholder="Enter Email"><br>
+    <input type="password" id="password" placeholder="Enter Password"><br>
+    <input type="submit" value="Submit">
+    <p id="msg"></p>
+  </form>
+</body>
+</html>
