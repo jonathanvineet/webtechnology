@@ -1,0 +1,58 @@
+Exercise 7: XML - Schema - XSLT/XSL
+====================================
+
+FILES IN THIS FOLDER:
+---------------------
+
+1. instruments.xml (DATA)
+   - Contains musical instrument data
+   - References Schema (XSD) for validation
+   - References Stylesheet (XSL) for display
+
+2. instruments.xsd (SCHEMA)
+   - XML Schema Definition
+   - Defines structure/rules for XML
+   - Validates that XML follows correct format
+
+3. style.xsl (XSLT/XSL)
+   - XSL Stylesheet
+   - Transforms XML to HTML
+   - Creates table display
+
+4. index.php (PHP PARSER)
+   - PHP file to read XML
+   - Uses simplexml_load_file()
+   - Displays data in HTML table
+
+HOW TO RUN:
+-----------
+
+Method 1: Open XML directly (Browser applies XSL)
+  open instruments.xml
+
+Method 2: Run PHP version
+  brew services start httpd
+  open http://localhost:8080/ex7-xml-xsl/index.php
+
+WHAT EACH PART DOES:
+--------------------
+
+XML (instruments.xml):
+  - Stores data in structured format
+  - <instruments> contains multiple <instrument>
+  - Each instrument has <name> and <type>
+
+Schema (instruments.xsd):
+  - Defines what's allowed in XML
+  - Sets data types (string, int, etc.)
+  - Controls element order and count
+
+XSL (style.xsl):
+  - <xsl:for-each> loops through instruments
+  - <xsl:value-of> gets values from XML
+  - Generates HTML table output
+
+PHP (index.php):
+  - $xml = simplexml_load_file() loads XML
+  - foreach loops through instruments
+  - echo outputs HTML

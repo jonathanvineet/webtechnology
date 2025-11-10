@@ -2,10 +2,16 @@
 <html>
 <head>
   <title>Register Instrument</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 20px; }
+    form { display: inline-block; text-align: left; }
+    input, select { margin: 5px 0; padding: 8px; width: 300px; }
+    input[type="submit"] { width: auto; padding: 10px 20px; cursor: pointer; }
+  </style>
 </head>
 <body>
   <h2>Register a Musical Instrument</h2>
-  <form action="AddInstrument" method="post">
+  <form action="add_instrument.php" method="post">
     Instrument Name: <input type="text" name="name" required><br><br>
     Email: <input type="email" name="email" required><br><br>
     Type:
@@ -17,5 +23,7 @@
     </select><br><br>
     <input type="submit" value="Register">
   </form>
+  <br><br>
+  <a href="index.php">Back to Home</a> | <a href="../ex6b-php/view_instruments.php">View All Instruments</a>
 </body>
 </html>
