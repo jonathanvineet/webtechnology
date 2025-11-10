@@ -1,0 +1,119 @@
+===============================================
+MANUAL EXECUTION GUIDE - EXERCISE 5a SERVLET
+===============================================
+
+FOLDER STRUCTURE:
+-----------------
+ex5a-tomcat-app/
+├── ex5a.html
+├── WEB-INF/
+│   ├── web.xml
+│   └── classes/
+│       ├── ex5a.java
+│       └── ex5a.class
+
+
+STEP-BY-STEP MANUAL COMMANDS:
+==============================
+
+STEP 1: NAVIGATE TO PROJECT
+----------------------------
+cd /Users/vine/elco/College/wt/programs
+
+
+STEP 2: CHECK IF SERVLET IS COMPILED
+-------------------------------------
+ls -la ex5a-tomcat-app/WEB-INF/classes/
+
+You should see:
+- ex5a.java (source code)
+- ex5a.class (compiled file)
+
+
+STEP 3: RECOMPILE SERVLET (if needed)
+--------------------------------------
+cd ex5a-tomcat-app/WEB-INF/classes
+
+javac -cp "/opt/homebrew/Cellar/tomcat/11.0.13/libexec/lib/servlet-api.jar" ex5a.java
+
+cd ../../..
+
+
+STEP 4: DEPLOY TO TOMCAT WEBAPPS
+---------------------------------
+cp -r ex5a-tomcat-app /opt/homebrew/Cellar/tomcat/11.0.13/libexec/webapps/
+
+
+STEP 5: CHECK TOMCAT STATUS
+----------------------------
+brew services list | grep tomcat
+
+If not running, start it:
+brew services start tomcat
+
+
+STEP 6: WAIT FOR DEPLOYMENT
+----------------------------
+sleep 5
+
+
+STEP 7: TEST IF TOMCAT IS RUNNING
+----------------------------------
+curl -I http://localhost:8080
+
+Should return: HTTP/1.1 200
+
+
+STEP 8: OPEN APPLICATION IN BROWSER
+------------------------------------
+open http://localhost:8080/ex5a-tomcat-app/ex5a.html
+
+
+STEP 9: TEST THE FORM
+----------------------
+1. Enter Name: John Doe
+2. Enter Instrument: Guitar
+3. Click Submit
+4. Should display your input
+
+
+STEP 10: VIEW TOMCAT LOGS (optional)
+-------------------------------------
+tail -f /opt/homebrew/Cellar/tomcat/11.0.13/libexec/logs/catalina.out
+
+Press Ctrl+C to exit
+
+
+STOP TOMCAT:
+------------
+brew services stop tomcat
+
+
+RESTART TOMCAT:
+---------------
+brew services restart tomcat
+
+
+CHECK DEPLOYED APPS:
+--------------------
+ls -la /opt/homebrew/Cellar/tomcat/11.0.13/libexec/webapps/
+
+
+REMOVE DEPLOYMENT:
+------------------
+rm -rf /opt/homebrew/Cellar/tomcat/11.0.13/libexec/webapps/ex5a-tomcat-app
+
+
+QUICK TEST COMMAND:
+-------------------
+curl http://localhost:8080/ex5a-tomcat-app/ex5a.html
+
+
+===============================================
+IMPORTANT PATHS:
+===============================================
+Project:        /Users/vine/elco/College/wt/programs/ex5a-tomcat-app
+Tomcat Home:    /opt/homebrew/Cellar/tomcat/11.0.13/libexec
+Webapps:        /opt/homebrew/Cellar/tomcat/11.0.13/libexec/webapps
+Logs:           /opt/homebrew/Cellar/tomcat/11.0.13/libexec/logs
+servlet-api:    /opt/homebrew/Cellar/tomcat/11.0.13/libexec/lib/servlet-api.jar

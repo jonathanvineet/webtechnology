@@ -1,0 +1,68 @@
+EXERCISE 5a: SERVLET SETUP ON WINDOWS
+=====================================
+
+PREREQUISITES:
+- JDK installed
+- Apache Tomcat installed
+
+FILE STRUCTURE:
+---------------
+ex5a-servlet/
+├── ex5a.html
+└── WEB-INF/
+    ├── web.xml
+    └── classes/
+        └── ex5a.java
+
+STEPS:
+------
+
+1. COMPILE THE SERVLET
+   Open Command Prompt and navigate to WEB-INF/classes:
+   
+   cd ex5a-servlet\WEB-INF\classes
+   
+   Compile with servlet-api.jar:
+   
+   javac -cp "C:\Program Files\Apache Tomcat\lib\servlet-api.jar" ex5a.java
+   
+   Note: Adjust Tomcat path if installed elsewhere
+
+2. DEPLOY TO TOMCAT
+   Copy ex5a-servlet folder to Tomcat webapps:
+   
+   xcopy ex5a-servlet "C:\Program Files\Apache Tomcat\webapps\ex5a-servlet\" /E /I
+   
+   Or manually copy the entire folder to:
+   C:\Program Files\Apache Tomcat\webapps\
+
+3. START TOMCAT
+   Navigate to Tomcat bin folder:
+   
+   cd "C:\Program Files\Apache Tomcat\bin"
+   
+   Start Tomcat:
+   
+   startup.bat
+
+4. ACCESS APPLICATION
+   Open browser and go to:
+   
+   http://localhost:8080/ex5a-servlet/ex5a.html
+
+5. TEST
+   - Enter musician name
+   - Enter instrument
+   - Click Submit
+   - View result
+
+STOP TOMCAT:
+------------
+cd "C:\Program Files\Apache Tomcat\bin"
+shutdown.bat
+
+TROUBLESHOOTING:
+----------------
+- If port 8080 busy, check server.xml in Tomcat/conf
+- Check catalina.out in Tomcat/logs for errors
+- Verify ex5a.class exists after compilation
