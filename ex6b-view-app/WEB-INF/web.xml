@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+  <servlet>
+    <servlet-name>ViewInstruments</servlet-name>
+    <servlet-class>ViewInstruments</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ViewInstruments</servlet-name>
+    <url-pattern>/ViewInstruments</url-pattern>
+  </servlet-mapping>
+</web-app>

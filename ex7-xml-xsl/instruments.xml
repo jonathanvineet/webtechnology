@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+
+<instruments>
+  <instrument>
+    <name>Guitar</name>
+    <type>String</type>
+  </instrument>
+  <instrument>
+    <name>Piano</name>
+    <type>Keyboard</type>
+  </instrument>
+  <instrument>
+    <name>Flute</name>
+    <type>Wind</type>
+  </instrument>
+  <instrument>
+    <name>Drum</name>
+    <type>Percussion</type>
+  </instrument>
+</instruments>
