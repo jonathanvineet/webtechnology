@@ -10,7 +10,18 @@ echo ""
 # Step 1: Detect Tomcat installation
 echo "📍 Step 1: Detecting Tomcat installation..."
 
-if [ -d "/opt/tomcat" ]; then
+# Check common Tomcat locations (including Homebrew)
+if [ -d "/opt/homebrew/opt/tomcat/libexec" ]; then
+    TOMCAT_HOME="/opt/homebrew/opt/tomcat/libexec"
+    echo "✓ Found Tomcat at: $TOMCAT_HOME (Homebrew)"
+elif [ -d "/usr/local/opt/tomcat/libexec" ]; then
+    TOMCAT_HOME="/usr/local/opt/tomcat/libexec"
+    echo "✓ Found Tomcat at: $TOMCAT_HOME (Homebrew)"
+elif [ -d "/opt/homebrew/Cellar/tomcat" ]; then
+    # Find the latest version
+    TOMCAT_HOME=$(find /opt/homebrew/Cellar/tomcat -maxdepth 2 -name "libexec" -type d | head -n 1)
+    echo "✓ Found Tomcat at: $TOMCAT_HOME (Homebrew Cellar)"
+elif [ -d "/opt/tomcat" ]; then
     TOMCAT_HOME="/opt/tomcat"
     echo "✓ Found Tomcat at: $TOMCAT_HOME"
 elif [ -d "/usr/local/tomcat" ]; then
@@ -32,10 +43,17 @@ fi
 
 SERVLET_API="$TOMCAT_HOME/lib/servlet-api.jar"
 
+# Check for Jakarta servlet API (Tomcat 10+)
 if [ ! -f "$SERVLET_API" ]; then
-    echo "❌ servlet-api.jar not found at: $SERVLET_API"
+    SERVLET_API="$TOMCAT_HOME/lib/jakarta.servlet-api.jar"
+fi
+
+if [ ! -f "$SERVLET_API" ]; then
+    echo "❌ servlet-api.jar or jakarta.servlet-api.jar not found in: $TOMCAT_HOME/lib/"
     exit 1
 fi
+
+echo "✓ Using servlet API: $(basename $SERVLET_API)"
 
 echo ""
 
